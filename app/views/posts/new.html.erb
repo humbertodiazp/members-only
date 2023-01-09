@@ -1,0 +1,6 @@
+ <%= form_with model: @posts do |form| %>
+        <%= form.label "Title:"  %>  
+        <%= form.text_field :title  %> 
+        <%= form.text_field :body, placeholder:'Please start typing here'%>
+        <%= form.submit "Submit" %>
+     <% end %>
