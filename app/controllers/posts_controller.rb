@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
     def create
             @post = Post.new(post_params)
+            @author =  User.new(user_id)
         
             if @post.save
             redirect_to new_post_path
@@ -16,25 +17,9 @@ class PostsController < ApplicationController
             end
         end
 
-    def edit
-        @post = Post.find(params[:id])
+    def index
+        @post = Post.all
+        
     end
 
-    def update
-        @post = Post.find(params[:id])
-
-        if @post.update(post_params)
-        redirect_to @post
-        else
-        render :edit
-        end
-    end
-
-
-    private
-    # returns the hash containing the params we need
-    # to create or update a post
-    def post_params
-        params.require(:users).permit(:username,:email,:password)
-    end
 end
