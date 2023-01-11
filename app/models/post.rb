@@ -1,3 +1,4 @@
 class Post < ApplicationRecord
-    belongs_to: User
+    validates :body, :title, presence: true
+    belongs_to :User
 end
